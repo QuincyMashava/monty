@@ -26,21 +26,26 @@ int is_number(const char *n)
  */
 void push(stack_t **h, unsigned int line_number, const char *n)
 {
-  if (!h)
-    return;
-  if (is_number(n) == -1)
+  stack_t *node = NULL;
+  (void) n;
+
+  node = malloc(sizeof(stack_t));
+  if (!node)
     {
-      printf("L%u: usage: push integer\n", line_number);
+      fprintf(stderr, "Error: malloc failed\n");
       freestack(h);
       exit(EXIT_FAILURE);
     }
+
+  node->prev = node->next = NULL;
+
+  if (!(*h))
+    (*h) = node;
   else
     {
-      if (add_end_node(h, atoi(n)) == -1)
-	{
-	  freestack(h);
-	  exit(EXIT_FAILURE);
-	}
+      (*h)->prev = node;
+      node->next = *h;
+      *h = node;
     }
 }
 /**
