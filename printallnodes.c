@@ -1,91 +1,91 @@
 #include "monty.h"
 /**
- * pall - printing all nodes in stack as requested
- * @h: head of list
- * @line_number: bytecode line number
- */
+* pall - printing all nodes in stack as requested
+* @h: head of list
+* @line_number: bytecode line number
+*/
 void pall(stack_t **h, unsigned int line_number)
 {
-  stack_t *tmp = NULL;
+stack_t *tmp = NULL;
 
-  if (!h || !*h)
-    return;
+if (!h || !*h)
+return;
 
-  (void) line_number;
-  tmp = *h;
-  while (tmp != NULL)
-    {
-      printf("%d\n", tmp->n);
-      tmp = tmp->next;
-    }
+(void) line_number;
+tmp = *h;
+while (tmp != NULL)
+{
+printf("%d\n", tmp->n);
+tmp = tmp->next;
+}
 }
 /**
- * pint - printing top node in stack
- * @h: head of list
- * @line_number: bytecode line number
- */
+* pint - printing top node in stack
+* @h: head of list
+* @line_number: bytecode line number
+*/
 void pint(stack_t **h, unsigned int line_number)
 {
-  if (!h || !*h)
-    {
-      printf("L%u: can't pint, stack empty\n", line_number);
-      exit(EXIT_FAILURE);
-    }
-  printf("%d\n", (*h)->n);
+if (!h || !*h)
+{
+printf("L%u: can't pint, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
+printf("%d\n", (*h)->n);
 
 }
 /**
- * pchar - printing the top node in stack as ascii letter
- * @h: head of list
- * @line_number: bytecode line number
- */
+* pchar - printing the top node in stack as ascii letter
+* @h: head of list
+* @line_number: bytecode line number
+*/
 void pchar(stack_t **h, unsigned int line_number)
 {
-  if (!h || !*h)
-    {
-      printf("L%u: can't pchar, stack empty\n", line_number);
-      exit(EXIT_FAILURE);
-    }
-  if (((*h)->n) >= 0 && ((*h)->n) <= 127)
-    printf("%c\n", (*h)->n);
-  else
-    {
-      printf("L%u: can't pchar, value out of range\n", line_number);
-      exit(EXIT_FAILURE);
-    }
+if (!h || !*h)
+{
+printf("L%u: can't pchar, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
+if (((*h)->n) >= 0 && ((*h)->n) <= 127)
+printf("%c\n", (*h)->n);
+else
+{
+printf("L%u: can't pchar, value out of range\n", line_number);
+exit(EXIT_FAILURE);
+}
 
 }
 /**
- * pstr - printing the top nodes in stack as ascii letter
- * and stop only if end of stack, node is 0, or not in ascii table
- * @h: head of list
- * @line_number: bytecode line number
- */
+* pstr - printing the top nodes in stack as ascii letter
+* and stop only if end of stack, node is 0, or not in ascii table
+* @h: head of list
+* @line_number: bytecode line number
+*/
 void pstr(stack_t **h, unsigned int line_number)
 {
-  stack_t *tmp;
+stack_t *tmp;
 
-  if (!h || !*h)
-    {
-      printf("L%u: can't pchar, stack empty\n", line_number);
-      exit(EXIT_FAILURE);
-    }
-  tmp = *h;
-  while ((tmp != NULL) && (tmp->n != 0) &&
-	 (tmp->n >= 0) && (tmp->n <= 127))
-    {
-      printf("%c", (tmp)->n);
-      tmp = tmp->next;
-    }
-  printf("\n");
+if (!h || !*h)
+{
+printf("L%u: can't pchar, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
+tmp = *h;
+while ((tmp != NULL) && (tmp->n != 0) &&
+(tmp->n >= 0) && (tmp->n <= 127))
+{
+printf("%c", (tmp)->n);
+tmp = tmp->next;
+}
+printf("\n");
 }
 /**
- * nop - does nothing really
- * @h: head of list
- * @line_number: bytecode line number
- */
+* nop - does nothing really
+* @h: head of list
+* @line_number: bytecode line number
+*/
 void nop(stack_t **h, unsigned int line_number)
 {
-  (void) h;
-  (void) line_number;
+(void) h;
+(void) line_number;
 }
